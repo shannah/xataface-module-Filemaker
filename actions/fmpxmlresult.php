@@ -23,6 +23,7 @@ class actions_fmpxmlresult {
 		$tableSize = $results->cardinality();
 		
 		header('Content-type: text/xml');
+		header('Content-Disposition: attachment; filename="'.$query['-table'].'.fmp.xml"');
 		include(dirname(__FILE__).'/fmpxmlresult.tpl.php');
 		exit;
 	
