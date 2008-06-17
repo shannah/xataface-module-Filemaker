@@ -17,6 +17,11 @@ class actions_fmpxmlresult {
 	function handle(&$params){
 		$app =& Dataface_Application::getInstance();
 		$query =& $app->getQuery();
+		if ( $query['-limit'] != 99999 or $query['-skip'] > 0 ){
+			
+			header('Location: '.$app->url('-limit=99999&-skip=0'));
+			exit;
+		}
 		
 		
 		$results =& $app->getResultSet();
