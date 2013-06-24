@@ -27,10 +27,12 @@
 	</METADATA>
 	<RESULTSET FOUND="<?php echo $results->found();?>">
 		<?php 
-		$results->loadSet('',false,false,false);
-		$iterator =& $results->iterator();
-		while ($iterator->hasNext()):
-			$row =& $iterator->next();
+                //$results = new Dataface_RecordReader()
+		//$results->loadSet('',false,false,false);
+		//$iterator =& $results->iterator();
+		//while ($iterator->hasNext()):
+		//	$row =& $iterator->next();
+                foreach ($rows as $row):
 		?>
 			<ROW MODID="1" RECORDID="<?php echo $this->_($this->getRecordId($row));?>">
 				<?php foreach ( $this->fields() as $field):?>
@@ -39,7 +41,7 @@
 					</COL>
 				<?php endforeach;?>
 			</ROW>
-		<?php endwhile;?>
+		<?php endforeach;?>
 	
 	</RESULTSET>
 </FMPXMLRESULT>

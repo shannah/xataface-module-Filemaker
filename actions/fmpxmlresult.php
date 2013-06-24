@@ -16,6 +16,7 @@ class actions_fmpxmlresult {
 	var $recordId = 1;
 	function handle(&$params){
 		$app =& Dataface_Application::getInstance();
+                $app->_conf['nocache'] = 1;
 		$query =& $app->getQuery();
 		if ( $query['-limit'] != 99999 or $query['-skip'] > 0 ){
 			
@@ -25,6 +26,8 @@ class actions_fmpxmlresult {
 		
 		
 		$results =& $app->getResultSet();
+                import('Dataface/RecordReader.php');
+                $rows = new Dataface_RecordReader($query, 100, false);
 		$tableSize = $results->cardinality();
 		
 		header('Content-type: text/xml');
