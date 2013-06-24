@@ -15,6 +15,7 @@ class actions_fmpxmlresult {
 	var $cache=array();
 	var $recordId = 1;
 	function handle(&$params){
+                set_time_limit(0);
 		$app =& Dataface_Application::getInstance();
                 $app->_conf['nocache'] = 1;
 		$query =& $app->getQuery();
